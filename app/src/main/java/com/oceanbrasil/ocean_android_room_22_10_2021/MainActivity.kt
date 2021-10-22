@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         val tvPokemons = findViewById<TextView>(R.id.tvPokemons)
 
-        tvPokemons.text = pokemonViewModel.pokemons.count().toString()
+        pokemonViewModel.pokemons.observe(this, {
+            tvPokemons.text = it.count().toString()
+        })
     }
 }
