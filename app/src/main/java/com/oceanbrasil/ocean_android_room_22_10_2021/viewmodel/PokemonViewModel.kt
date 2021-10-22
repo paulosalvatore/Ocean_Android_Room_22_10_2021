@@ -15,5 +15,10 @@ class PokemonViewModel(application: Application) : AndroidViewModel(application)
         val pokemonDao = db.pokemonDao()
 
         pokemons = pokemonDao.findAll()
+
+        Thread {
+            val pokemon = PokemonEntity(null, "Pikachu", "https://imagem.com/pikachu.png")
+            pokemonDao.create(pokemon)
+        }.start()
     }
 }
